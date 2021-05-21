@@ -71,8 +71,10 @@ class SpeechInterface(BoxLayout):
         self.ids.results.text = '\n'.join(stt.results)
 
 
+from android.permissions import request_permissions,Permission
 class SpeechApp(App):
-
+    def on_start(self):
+        request_permissions([Permission.RECORD_AUDIO])
     def build(self):
         return SpeechInterface()
 
